@@ -53,7 +53,6 @@ my $intranet_cgi_bin = Plack::App::CGIBin->new(
 )->to_app;
 
 my $opac = builder {
-    enable "ReverseProxy";
     enable "Plack::Middleware::Static",
         path => sub { s/_\d\d\.\d{7}\.(js|css)/.$1/, m!^/opac-tmpl/! },
         root => "$home/koha-tmpl/";
@@ -65,7 +64,6 @@ my $opac = builder {
 };
 
 my $intranet = builder {
-    enable "ReverseProxy";
     enable "Plack::Middleware::Static",
         path => sub { s/_\d\d\.\d{7}\.(js|css)/.$1/, m!^/intranet-tmpl/! },
         root => "$home/koha-tmpl/";

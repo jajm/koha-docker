@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 export MYSQL_HOST=${MYSQL_HOST:-db}
 export MYSQL_PORT=${MYSQL_PORT:-3306}
 export MYSQL_DATABASE=${MYSQL_DATABASE:-koha}

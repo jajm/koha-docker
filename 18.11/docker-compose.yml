@@ -9,7 +9,7 @@ services:
             MYSQL_PASSWORD: koha
 
     memcached:
-        image: memcached
+        image: memcached:alpine
 
     elasticsearch:
         image: koha/elasticsearch-icu:6.x

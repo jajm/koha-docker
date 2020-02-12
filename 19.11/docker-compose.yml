@@ -1,0 +1,26 @@
+version: "3.0"
+services:
+    db:
+        image: mariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: koha
+            MYSQL_USER: koha
+            MYSQL_PASSWORD: koha
+
+    memcached:
+        image: memcached:alpine
+
+    elasticsearch:
+        image: koha/elasticsearch-icu:6.x
+        environment:
+            discovery.type: single-node
+
+    web:
+        build: .
+        ports:
+            - "5000-5001:5000-5001"
+        depends_on:
+            - db
+            - memcached
+            - elasticsearch
