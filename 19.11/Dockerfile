@@ -27,7 +27,8 @@ WORKDIR /home/koha
 
 COPY --chown=koha:koha cpanfile .
 
-RUN export PERL_CPANM_OPT="--quiet --metacpan --notest --local-lib-contained /home/koha/.local" \
+ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
+RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm Module::Install \
     && cpanm --installdeps . \
     && rm -rf /home/koha/.cpanm
