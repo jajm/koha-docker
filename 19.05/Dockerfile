@@ -40,6 +40,7 @@ COPY --chown=koha:koha app.psgi .
 ENV KOHA_CONF /home/koha/etc/koha-conf.xml
 ENV PERL5LIB /home/koha/koha:/home/koha/.local/lib/perl5
 ENV PATH /home/koha/.local/bin:$PATH
+ENV LANG C.UTF-8
 
 EXPOSE 5000 5001
 
