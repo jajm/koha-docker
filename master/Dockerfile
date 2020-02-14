@@ -31,6 +31,7 @@ ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm Module::Install \
     && cpanm --installdeps . \
+    && cpanm Starman Catmandu::MARC~1.241 Catmandu::Store::ElasticSearch~'>= 0.0507, <= 0.512' \
     && rm -rf /home/koha/.cpanm
 
 RUN git clone --progress --depth 1 --branch master https://github.com/Koha-Community/Koha.git koha
