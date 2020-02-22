@@ -33,7 +33,7 @@ RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm Starman Catmandu::MARC~1.241 Catmandu::Store::ElasticSearch~'>= 0.0507, <= 0.512' \
     && rm -rf /home/koha/.cpanm
 
-# Invalidate docker cache where there are new commits
+# Invalidate docker cache when there are new commits
 ADD https://api.github.com/repos/Koha-Community/Koha/git/refs/heads/master version.json
 
 RUN git clone --progress --depth 1 --branch master https://github.com/Koha-Community/Koha.git koha

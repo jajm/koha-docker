@@ -29,11 +29,10 @@ COPY --chown=koha:koha cpanfile .
 
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
-    && cpanm Module::Install \
     && cpanm --installdeps . \
     && rm -rf /home/koha/.cpanm
 
-RUN git clone --progress --depth 1 --branch v19.05.07 https://github.com/Koha-Community/Koha.git koha
+RUN git clone --progress --depth 1 --branch v19.05.08 https://github.com/Koha-Community/Koha.git koha
 
 COPY --chown=koha:koha koha-conf.xml.in etc/
 COPY --chown=koha:koha app.psgi .
