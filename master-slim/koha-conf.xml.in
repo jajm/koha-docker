@@ -47,7 +47,6 @@
       <server>$ELASTICSEARCH_SERVER</server>
       <index_name>$ELASTICSEARCH_INDEX_NAME</index_name>
       <cxn_pool>Static</cxn_pool>
-      <client>6_0::Direct</client>
     </elasticsearch>
     <timezone></timezone>
   </config>
