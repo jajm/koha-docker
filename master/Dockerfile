@@ -34,7 +34,7 @@ RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && rm -rf /home/koha/.cpanm
 
 # Invalidate docker cache when there are new commits
-ADD https://api.github.com/repos/Koha-Community/Koha/git/refs/heads/master version.json
+ADD --chown=koha:koha https://api.github.com/repos/Koha-Community/Koha/git/refs/heads/master version.json
 
 RUN git clone --progress --depth 1 --branch master https://github.com/Koha-Community/Koha.git koha
 
