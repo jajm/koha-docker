@@ -32,7 +32,7 @@ RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm --installdeps . \
     && rm -rf /home/koha/.cpanm
 
-RUN git clone --progress --depth 1 --branch v19.11.05 https://github.com/Koha-Community/Koha.git koha
+RUN git clone --progress --depth 1 --branch v19.11.06 https://github.com/Koha-Community/Koha.git koha
 
 COPY --chown=koha:koha koha-conf.xml.in etc/
 COPY --chown=koha:koha app.psgi .

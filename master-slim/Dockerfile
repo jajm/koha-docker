@@ -24,7 +24,7 @@ ADD https://raw.githubusercontent.com/Koha-Community/Koha/master/cpanfile .
 
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest --local-lib-contained /app/.local" \
     && cpanm --installdeps . \
-    && cpanm Starman Catmandu::MARC~1.241 Catmandu::Store::ElasticSearch~'>= 0.0507, <= 0.512' \
+    && cpanm Starman \
     && rm -rf /root/.cpanm
 
 # Invalidate docker cache when there are new commits
