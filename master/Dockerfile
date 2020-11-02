@@ -40,6 +40,7 @@ ADD --chown=koha:koha https://api.github.com/repos/Koha-Community/Koha/git/refs/
 RUN git clone --progress --depth 1 --branch master https://github.com/Koha-Community/Koha.git koha
 
 COPY --chown=koha:koha koha-conf.xml.in etc/
+COPY --chown=koha:koha log4perl.conf etc/
 COPY --chown=koha:koha app.psgi .
 
 ENV KOHA_CONF /home/koha/etc/koha-conf.xml
