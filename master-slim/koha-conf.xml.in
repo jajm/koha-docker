@@ -27,6 +27,7 @@
     <memcached_namespace>$MEMCACHED_NAMESPACE</memcached_namespace>
     <template_cache_dir>/tmp</template_cache_dir>
     <api_secret_passphrase>secret</api_secret_passphrase>
+    <log4perl_conf>/home/koha/etc/log4perl.conf</log4perl_conf>
     <ttf>
       <font type="TR">/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf</font>
       <font type="TB">/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf</font>
