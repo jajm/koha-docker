@@ -25,7 +25,7 @@ USER koha
 
 WORKDIR /home/koha
 
-ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/v20.05.05/cpanfile .
+ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/v20.05.06/cpanfile .
 
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
@@ -34,7 +34,7 @@ RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && rm -rf /home/koha/.cpanm
 
 
-RUN git clone --progress --depth 1 --branch v20.05.05 https://github.com/Koha-Community/Koha.git koha
+RUN git clone --progress --depth 1 --branch v20.05.06 https://github.com/Koha-Community/Koha.git koha
 
 COPY --chown=koha:koha koha-conf.xml.in etc/
 COPY --chown=koha:koha app.psgi .
