@@ -20,6 +20,8 @@ services:
         build: .
         ports:
             - "5000-5001:5000-5001"
+        environment:
+            MOJO_MODE: development
         depends_on:
             - db
             - memcached

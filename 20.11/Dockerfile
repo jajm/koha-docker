@@ -30,7 +30,7 @@ ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/v20.
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm --installdeps . \
-    && cpanm Readonly Array::Utils JSON::Validator@4.05 \
+    && cpanm Readonly Array::Utils JSON::Validator@4.05 IO::Scalar \
     && cpanm Starman \
     && rm -rf /home/koha/.cpanm
 
@@ -38,7 +38,6 @@ RUN git clone --progress --depth 1 --branch v20.11.00 https://github.com/Koha-Co
 
 COPY --chown=koha:koha koha-conf.xml.in etc/
 COPY --chown=koha:koha log4perl.conf etc/
-COPY --chown=koha:koha app.psgi .
 
 ENV KOHA_CONF /home/koha/etc/koha-conf.xml
 ENV PERL5LIB /home/koha/koha:/home/koha/.local/lib/perl5
@@ -49,5 +48,6 @@ EXPOSE 5000 5001
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
+WORKDIR /home/koha/koha
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["starman", "--listen", ":5000", "--listen", ":5001"]
