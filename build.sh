@@ -5,6 +5,7 @@ set -ex
 docker build --tag julianmaurice/koha:19.05.17 --tag julianmaurice/koha:19.05 19.05
 docker build --tag julianmaurice/koha:19.11.12 --tag julianmaurice/koha:19.11 19.11
 docker build --tag julianmaurice/koha:20.05.06 --tag julianmaurice/koha:20.05 --tag julianmaurice/koha:latest 20.05
+docker build --tag julianmaurice/koha:20.11.00 --tag julianmaurice/koha:20.11 --tag julianmaurice/koha:latest 20.11
 docker build --tag julianmaurice/koha:master master
 docker build --tag julianmaurice/koha:master-mojo master-mojo
 
