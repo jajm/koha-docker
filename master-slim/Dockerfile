@@ -24,7 +24,7 @@ ADD https://raw.githubusercontent.com/Koha-Community/Koha/master/cpanfile .
 
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest --local-lib-contained /app/.local" \
     && cpanm --installdeps . \
-    && cpanm Readonly Array::Utils JSON::Validator@4.05 IO::Scalar \
+    && cpanm JSON::Validator@4.05 IO::Scalar \
     && cpanm Starman \
     && rm -rf /root/.cpanm
 
