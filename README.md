@@ -1,6 +1,6 @@
 # Docker files for Koha
 
-Simple ̀`Dockerfile`s to run Koha.
+Simple `Dockerfile`s to run Koha.
 
 ## Quick start
 
