@@ -30,6 +30,7 @@ ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/v20.
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm --installdeps . \
+    && cpanm JSON::Validator@4.05 Mojolicious::Plugin::OpenAPI@3.40 Mojolicious@8 \
     && cpanm Starman \
     && rm -rf /home/koha/.cpanm
 
