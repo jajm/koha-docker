@@ -19,6 +19,6 @@ check_version() {
     compare "v$1.*" $(find_version $1)
 }
 
-for v in 19.11 20.05 20.11; do
+for v in 19.11 20.05 20.11 21.05; do
     check_version $v
 done
