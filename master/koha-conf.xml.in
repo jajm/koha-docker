@@ -51,4 +51,33 @@
     </elasticsearch>
     <timezone></timezone>
   </config>
+
+  <listen id="biblioserver">unix:/home/koha/var/run/bibliosocket</listen>
+  <listen id="authorityserver">unix:/home/koha/var/run/authoritysocket</listen>
+
+  <server id="biblioserver" listenref="biblioserver">·
+    <directory>/home/koha/var/lib/zebradb/biblios</directory>
+    <config>/home/koha/etc/zebradb/zebra-biblios-dom.cfg</config>
+    <cql2rpn>/home/koha/etc/zebradb/pqf.properties</cql2rpn>
+    <xi:include href="/home/koha/etc/zebradb/retrieval-info-bib-dom.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="/home/koha/etc/zebradb/explain-biblios.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </server>
+  <serverinfo id="biblioserver">
+    <ccl2rpn>/home/koha/etc/zebradb/ccl.properties</ccl2rpn>
+    <user>kohauser</user>
+    <password>zebrastripes</password>
+  </serverinfo>
+
+  <server id="authorityserver"  listenref="authorityserver" >
+    <directory>/home/koha/var/lib/zebradb/authorities</directory>
+    <config>/home/koha/etc/zebradb/zebra-authorities-dom.cfg</config>
+    <cql2rpn>/home/koha/etc/zebradb/pqf.properties</cql2rpn>
+    <xi:include href="/home/koha/etc/zebradb/retrieval-info-auth-dom.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="/home/koha/etc/zebradb/explain-authorities.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </server>
+  <serverinfo id="authorityserver">
+    <ccl2rpn>/home/koha/etc/zebradb/ccl.properties</ccl2rpn>
+    <user>kohauser</user>
+    <password>zebrastripes</password>
+  </serverinfo>
 </yazgfs>

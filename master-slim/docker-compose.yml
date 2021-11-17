@@ -16,10 +16,26 @@ services:
         environment:
             discovery.type: single-node
 
-    web:
+    intranet:
         build: .
+        image: koha:master-slim
         ports:
-            - "5000-5001:5000-5001"
+            - "3000:3000"
+        environment:
+            MOJO_MODE: development
+        depends_on:
+            - db
+            - memcached
+            - elasticsearch
+
+    opac:
+        build: .
+        image: koha:master-slim
+        command: ["bin/opac", "prefork"]
+        ports:
+            - "3001:3000"
+        environment:
+            MOJO_MODE: development
         depends_on:
             - db
             - memcached

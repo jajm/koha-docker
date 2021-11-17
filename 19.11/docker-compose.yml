@@ -16,10 +16,26 @@ services:
         environment:
             discovery.type: single-node
 
-    web:
+    intranet:
         build: .
+        image: koha:19.11
         ports:
-            - "5000-5001:5000-5001"
+            - "3000:3000"
+        environment:
+            MOJO_MODE: development
+        depends_on:
+            - db
+            - memcached
+            - elasticsearch
+
+    opac:
+        build: .
+        image: koha:19.11
+        command: ["starman", "--listen", ":3000", "opac.psgi"]
+        ports:
+            - "3001:3000"
+        environment:
+            MOJO_MODE: development
         depends_on:
             - db
             - memcached
