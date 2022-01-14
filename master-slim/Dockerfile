@@ -28,7 +28,7 @@ ADD https://raw.githubusercontent.com/Koha-Community/Koha/master/cpanfile .
 
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest --local-lib-contained /app/.local" \
     && cpanm --installdeps . \
-    && cpanm JSON::Validator@3.14 Mojolicious::Plugin::OpenAPI@2.16 Mojolicious@8.12 IO::Scalar \
+    && cpanm JSON::Validator@3.14 Mojolicious::Plugin::OpenAPI@2.16 Mojolicious@8.12 \
     && rm -rf /root/.cpanm
 
 # Invalidate docker cache when there are new commits
