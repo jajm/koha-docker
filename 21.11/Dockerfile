@@ -28,7 +28,7 @@ USER koha
 
 WORKDIR /home/koha
 
-ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/v21.11.03/cpanfile .
+ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/v21.11.05/cpanfile .
 
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
@@ -36,7 +36,7 @@ RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm JSON::Validator@3.14 Mojolicious::Plugin::OpenAPI@2.16 Mojolicious@8.12 IO::Scalar \
     && rm -rf /home/koha/.cpanm
 
-RUN git clone --progress --depth 1 --branch v21.11.03 https://github.com/Koha-Community/Koha.git koha
+RUN git clone --progress --depth 1 --branch v21.11.05 https://github.com/Koha-Community/Koha.git koha
 
 COPY --chown=koha:koha koha-conf.xml.in log4perl.conf etc/
 
