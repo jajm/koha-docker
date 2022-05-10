@@ -33,7 +33,6 @@ ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/mast
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
     && cpanm --installdeps . \
-    && cpanm JSON::Validator@3.14 Mojolicious::Plugin::OpenAPI@2.16 Mojolicious@8.12 \
     && rm -rf /home/koha/.cpanm
 
 # Invalidate docker cache when there are new commits
