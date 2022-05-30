@@ -1,0 +1,42 @@
+version: "3.0"
+services:
+    db:
+        image: mariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: koha
+            MYSQL_USER: koha
+            MYSQL_PASSWORD: koha
+
+    memcached:
+        image: memcached:alpine
+
+    elasticsearch:
+        image: koha/elasticsearch-icu:6.x
+        environment:
+            discovery.type: single-node
+
+    intranet:
+        build: .
+        image: koha:master
+        ports:
+            - "3000:3000"
+        environment:
+            MOJO_MODE: development
+        depends_on:
+            - db
+            - memcached
+            - elasticsearch
+
+    opac:
+        build: .
+        image: koha:master
+        command: ["bin/opac", "prefork"]
+        ports:
+            - "3001:3000"
+        environment:
+            MOJO_MODE: development
+        depends_on:
+            - db
+            - memcached
+            - elasticsearch
