@@ -18,7 +18,7 @@ services:
 
     intranet:
         build: .
-        image: koha:master
+        image: koha:22.05
         ports:
             - "3000:3000"
         environment:
@@ -30,7 +30,7 @@ services:
 
     opac:
         build: .
-        image: koha:master
+        image: koha:22.05
         command: ["bin/opac", "prefork"]
         ports:
             - "3001:3000"

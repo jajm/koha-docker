@@ -25,6 +25,6 @@ get_tag_date() {
     date -d "$tag_date" +%F
 }
 
-for v in 19.11 20.05 20.11 21.05 21.11; do
+for v in 19.11 20.05 20.11 21.05 21.11 22.05; do
     check_version $v
 done
