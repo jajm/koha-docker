@@ -17,6 +17,7 @@ RUN apt-get update && apt-get --no-install-recommends -y install \
     make \
     perl \
     pkg-config \
+    libdbd-mysql-perl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN adduser --disabled-password --gecos '' koha
