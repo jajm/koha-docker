@@ -1,0 +1,83 @@
+<yazgfs>
+  <config>
+    <db_scheme>mysql</db_scheme>
+    <hostname>$MYSQL_HOST</hostname>
+    <port>$MYSQL_PORT</port>
+    <database>$MYSQL_DATABASE</database>
+    <user>$MYSQL_USER</user>
+    <pass>$MYSQL_PASSWORD</pass>
+    <tls>no</tls>
+    <pluginsdir></pluginsdir>
+    <enable_plugins>0</enable_plugins>
+    <upload_path></upload_path>
+    <tmp_path>/tmp</tmp_path>
+    <intranetdir>/home/koha/koha</intranetdir>
+    <opacdir>/home/koha/koha/opac</opacdir>
+    <opachtdocs>/home/koha/koha/koha-tmpl/opac-tmpl</opachtdocs>
+    <intrahtdocs>/home/koha/koha/koha-tmpl/intranet-tmpl</intrahtdocs>
+    <includes>/home/koha/koha/koha-tmpl/intranet-tmpl/prog/en/includes/</includes>
+    <logdir>/home/koha/var/log</logdir>
+    <docdir>/home/koha/koha/docs</docdir>
+    <backup_db_via_tools>0</backup_db_via_tools>
+    <backup_conf_via_tools>0</backup_conf_via_tools>
+    <useldapserver>0</useldapserver>
+    <useshibboleth>0</useshibboleth>
+    <queryparser_config>/home/koha/etc/searchengine/queryparser.yaml</queryparser_config>
+    <memcached_servers>$MEMCACHED_SERVER</memcached_servers>
+    <memcached_namespace>$MEMCACHED_NAMESPACE</memcached_namespace>
+    <template_cache_dir>/tmp</template_cache_dir>
+    <api_secret_passphrase>secret</api_secret_passphrase>
+    <log4perl_conf>/home/koha/etc/log4perl.conf</log4perl_conf>
+    <ttf>
+      <font type="TR">/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf</font>
+      <font type="TB">/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf</font>
+      <font type="TI">/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf</font>
+      <font type="TBI">/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf</font>
+      <font type="C">/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf</font>
+      <font type="CB">/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf</font>
+      <font type="CO">/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf</font>
+      <font type="CBO">/usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf</font>
+      <font type="H">/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf</font>
+      <font type="HO">/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf</font>
+      <font type="HB">/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf</font>
+      <font type="HBO">/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf</font>
+    </ttf>
+    <sms_send_config>/home/koha/etc/sms_send/</sms_send_config>
+    <mana_config>https://mana-kb.koha-community.org</mana_config>
+    <elasticsearch>
+      <server>$ELASTICSEARCH_SERVER</server>
+      <index_name>$ELASTICSEARCH_INDEX_NAME</index_name>
+      <cxn_pool>Static</cxn_pool>
+    </elasticsearch>
+    <timezone></timezone>
+  </config>
+
+  <listen id="biblioserver">unix:/home/koha/var/run/bibliosocket</listen>
+  <listen id="authorityserver">unix:/home/koha/var/run/authoritysocket</listen>
+
+  <server id="biblioserver" listenref="biblioserver">·
+    <directory>/home/koha/var/lib/zebradb/biblios</directory>
+    <config>/home/koha/etc/zebradb/zebra-biblios-dom.cfg</config>
+    <cql2rpn>/home/koha/etc/zebradb/pqf.properties</cql2rpn>
+    <xi:include href="/home/koha/etc/zebradb/retrieval-info-bib-dom.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="/home/koha/etc/zebradb/explain-biblios.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </server>
+  <serverinfo id="biblioserver">
+    <ccl2rpn>/home/koha/etc/zebradb/ccl.properties</ccl2rpn>
+    <user>kohauser</user>
+    <password>zebrastripes</password>
+  </serverinfo>
+
+  <server id="authorityserver"  listenref="authorityserver" >
+    <directory>/home/koha/var/lib/zebradb/authorities</directory>
+    <config>/home/koha/etc/zebradb/zebra-authorities-dom.cfg</config>
+    <cql2rpn>/home/koha/etc/zebradb/pqf.properties</cql2rpn>
+    <xi:include href="/home/koha/etc/zebradb/retrieval-info-auth-dom.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="/home/koha/etc/zebradb/explain-authorities.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </server>
+  <serverinfo id="authorityserver">
+    <ccl2rpn>/home/koha/etc/zebradb/ccl.properties</ccl2rpn>
+    <user>kohauser</user>
+    <password>zebrastripes</password>
+  </serverinfo>
+</yazgfs>

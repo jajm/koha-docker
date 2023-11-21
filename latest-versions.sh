@@ -3,7 +3,7 @@
 URL='https://github.com/Koha-Community/Koha'
 
 compare() {
-    latest=$(git ls-remote --refs --sort=-version:refname $URL $1 | head -n 1 | awk '{print $2}' | sed 's,refs/tags/,,')
+    latest="$(git ls-remote --refs --sort=-version:refname "$URL" "$1" | head -n 1 | awk '{print $2}' | sed 's,refs/tags/,,')"
     if [ "$latest" = "$2" ]; then
         echo "$latest OK ($(get_tag_date "$latest"))"
     else
@@ -16,7 +16,7 @@ find_version() {
 }
 
 check_version() {
-    compare "v$1.*" $(find_version $1)
+    compare "v$1.*" "$(find_version "$1")"
 }
 
 get_tag_date() {
@@ -25,6 +25,6 @@ get_tag_date() {
     date -d "$tag_date" +%F
 }
 
-for v in 19.11 20.05 20.11 21.05 21.11 22.05; do
+for v in 21.11 22.05 22.11 23.05; do
     check_version $v
 done
