@@ -32,6 +32,7 @@ ADD --chown=koha:koha https://raw.githubusercontent.com/Koha-Community/Koha/mast
 
 ENV PERL_CPANM_OPT --local-lib-contained /home/koha/.local
 RUN export PERL_CPANM_OPT="--quiet --metacpan --notest $PERL_CPANM_OPT" \
+    && cpanm DBD::mysql~'<5' \
     && cpanm --installdeps . \
     && rm -rf /home/koha/.cpanm
 
